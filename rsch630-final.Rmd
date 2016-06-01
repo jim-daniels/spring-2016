@@ -1,5 +1,5 @@
 ---
-title: "RSCH 630 - Research Methods"
+title: "RSCH 630 - Research Methods Final Abdul"
 subtitle: 'Final Exam'
 author: "Your Name"
 date: "Due `r format(as.POSIXct(594000, origin = '2016-06-01'), '%R %x')`"
