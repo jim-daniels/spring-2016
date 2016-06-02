@@ -125,18 +125,23 @@ $(document).ready(function () {
 <div id="TOC">
 <ul>
 <li><a href="#installing-resources">Installing Resources</a><ul>
-<li><a href="#step-1---create-a-github-account-and-fork-the-rsch-630-repo">Step 1 - Create a GitHub Account and Fork the <code>rsch-630</code> Repo</a></li>
-<li><a href="#step-2---install-r">Step 2 - Install R</a></li>
-<li><a href="#step-3---look-around">Step 3 - Look Around</a></li>
+<li><a href="#step-1---create-a-github-account">Step 1 - Create a GitHub Account</a></li>
+<li><a href="#step-2---fork-the-rsch-630spring-2016-repository">Step 2 - Fork the rsch-630/spring-2016 repository</a></li>
+<li><a href="#step-3---install-r">Step 3 - Install R</a></li>
 <li><a href="#step-4---install-a-bunch-of-r-packages">Step 4 - Install a Bunch of R Packages</a></li>
 <li><a href="#step-5---install-rstudio">Step 5 - Install RStudio</a></li>
-<li><a href="#step-6-install-connect-rtools">Step 6 Install &amp; Connect Rtools</a></li>
-<li><a href="#step-7-install-connect-git">Step 7 Install &amp; Connect Git</a></li>
+<li><a href="#step-6-install-and-configure-git">Step 6 Install and Configure Git</a></li>
+<li><a href="#step-7-connect-git-to-rstudio">Step 7 Connect Git to RStudio</a></li>
+<li><a href="#step-8-create-a-new-rproject">Step 8 Create a new RProject</a></li>
+<li><a href="#step-9-install-connect-rtools">Step 9 Install &amp; Connect Rtools</a></li>
+<li><a href="#step-10-install-a-distribution-for-creating-pdfs">Step 10 Install a distribution for creating PDF’s</a></li>
+<li><a href="#congratulations-youve-installed-and-integrated-rrstudio-data-science-toolkit">Congratulations! You’ve installed and integrated R/RStudio Data Science Toolkit</a></li>
 </ul></li>
 <li><a href="#working-example">Working Example</a><ul>
-<li><a href="#scraping-data-from-data.gov">Scraping data from Data.gov</a></li>
-<li><a href="#processing-the-data">Processing The Data</a></li>
-<li><a href="#inserting-tables-automatically">Inserting tables automatically</a></li>
+<li><a href="#scraping-data-from-data.gov-using-the-httr-package">Scraping data from Data.gov using the <code>httr</code> package</a></li>
+<li><a href="#processing-the-data-using-the-data.table-package">Processing The Data using the <code>data.table</code> package</a></li>
+<li><a href="#inserting-tables-automatically-with-the-xtable-package">Inserting tables automatically with the <code>xtable</code> package</a></li>
+<li><a href="#citing-sources-and-creating-bibliographies-with-the-knitcitations-package">Citing sources and creating bibliographies with the <code>knitcitations</code> package</a></li>
 </ul></li>
 <li><a href="#references">References</a></li>
 </ul>
@@ -144,14 +149,15 @@ $(document).ready(function () {
 
 <div id="installing-resources" class="section level1">
 <h1>Installing Resources</h1>
-<div id="step-1---create-a-github-account-and-fork-the-rsch-630-repo" class="section level2">
-<h2>Step 1 - Create a GitHub Account and Fork the <code>rsch-630</code> Repo</h2>
+<div id="step-1---create-a-github-account" class="section level2">
+<h2>Step 1 - Create a GitHub Account</h2>
 <ul>
 <li><p>Go to <a href="https://github.com/">GitHub</a> and sign up for an account</p>
 <ul>
 <li><p>Choose a username</p></li>
 <li><p>Add an email address (don’t use your afit.edu address as your primary, you can add it as a secondary address later)</p></li>
 <li><p>Enter a password</p></li>
+<li><p>Before moving forward check your inbox for an email from GitHub to verify your address.</p></li>
 </ul></li>
 <li><p>GitHub is a version control tool for <a href="https://en.wikipedia.org/wiki/ASCII">ASCII</a> or <a href="https://en.wikipedia.org/wiki/UTF-8">UTF-8</a> encoded files</p>
 <ul>
@@ -163,36 +169,53 @@ $(document).ready(function () {
 <li><p>Outside of AFIT/AF, GitHub is the standard - some employers prefer GitHub profiles over resumes</p></li>
 </ul></li>
 </ul>
-<blockquote>
-<p>“It’s become so important to its 13 million users that if GitHub goes down, the software development world practically stops.” <span class="citation">[1]</span></p>
-</blockquote>
 </div>
-<div id="step-2---install-r" class="section level2">
-<h2>Step 2 - Install R</h2>
-<p>On personal machines you can install R version 3.3.0 (2016-05-03) from <a href="https://cloud.r-project.org/" class="uri">https://cloud.r-project.org/</a> selecting the default installation</p>
-<p>On AFIT machines you can install R version 3.3.0 (2016-05-03) from the <a href="file:///R:/Stats/R">R:/Stats/R</a> folder</p>
+<div id="step-2---fork-the-rsch-630spring-2016-repository" class="section level2">
+<h2>Step 2 - Fork the rsch-630/spring-2016 repository</h2>
 <ul>
-<li><p>Select the green installer icon to ensure R installs to Program Files</p></li>
-<li><p>Follow the prompts for a default installation</p></li>
+<li><p>Click the round GitHub ‘Octet’ logo near the top to ensure you’re not inside a repository</p></li>
+<li><p>In the search box type <code>rsch-630</code> and click search</p></li>
+<li><p>Click the <code>users</code> link toward to access the rsch-630 organization account</p></li>
+<li><p>Click the <code>spring-2016</code> link to access the repository</p></li>
+<li><p>Near the top of the page are three buttons <code>watch</code>, <code>star</code>, and <code>fork</code>. Click the <code>fork</code> button.</p></li>
+<li><p>You should now see the <code>your.username/spring-2016</code> repository under your account</p></li>
+<li><p>This forked copy belongs to you - your changes have no affect on the <code>rsch-630/spring-2016</code></p></li>
+<li><p>Changes can only be made to my repo if you submit a pull request and I accept it.</p></li>
 </ul>
 </div>
-<div id="step-3---look-around" class="section level2">
-<h2>Step 3 - Look Around</h2>
-<p>Open R up…It’s ugly = no one would use R if this was all there was to it. Thankfully there’s a <strong>LOT</strong> more</p>
+<div id="step-3---install-r" class="section level2">
+<h2>Step 3 - Install R</h2>
+<ul>
+<li><p>R version 3.3.0 (2016-05-03) can be installed from <a href="https://cloud.r-project.org/" class="uri">https://cloud.r-project.org/</a></p></li>
+<li><p>Select the version for your OS</p></li>
+<li><p>Follow the prompts for a default installation</p></li>
+</ul>
 </div>
 <div id="step-4---install-a-bunch-of-r-packages" class="section level2">
 <h2>Step 4 - Install a Bunch of R Packages</h2>
 <ul>
-<li><code>install.packages(c('installr','devtools','rmarkdown'))</code></li>
-<li><code>install.packages(c('shiny','RJSONIO','xtable'))</code></li>
-<li><code>install.packages(c('DT','knitcitations','RefManageR'))</code></li>
+<li><p>These are some basic packages needed for</p>
+<ul>
+<li><p>Creating markdown documents</p></li>
+<li><p>Developing shiny apps</p></li>
+<li><p>Create instant tables</p></li>
+<li><p>Cite references</p></li>
+</ul></li>
+<li><p>Copy and paste the following lines of code, one at a time</p>
+<ul>
+<li><p><code>install.packages(c('installr','devtools','rmarkdown'))</code></p></li>
+<li><p><code>install.packages(c('shiny','RJSONIO','xtable'))</code></p></li>
+<li><p><code>install.packages(c('DT','knitcitations','RefManageR'))</code></p></li>
+</ul></li>
+<li><p>Any packages that are dependencies of this packages will also be installed</p></li>
+<li><p>Note: the <code>installr</code> package is specific to Windows machines and is not available for Mac, Linux, Unix machines</p></li>
 </ul>
 </div>
 <div id="step-5---install-rstudio" class="section level2">
 <h2>Step 5 - Install RStudio</h2>
 <ul>
-<li><p>If you using a Windows machine this is really easy, just run <code>installr::install.rstudio()</code></p></li>
-<li><p>If you’re not using Windows you’ll have to go to <a href="https://www.rstudio.com/products/rstudio/download/" class="uri">https://www.rstudio.com/products/rstudio/download/</a> to install the most recent version</p></li>
+<li><p>On Windows machines this is really easy - just run <code>installr::install.rstudio()</code> inside of R</p></li>
+<li><p>For non-Windows machines, go to <a href="https://www.rstudio.com/products/rstudio/download/" class="uri">https://www.rstudio.com/products/rstudio/download/</a> to install the most recent version</p></li>
 <li><p><strong>NOTE:</strong> RStudio is an IDE</p>
 <ul>
 <li><p>You can work on files written in different languages side-by-side</p></li>
@@ -200,28 +223,118 @@ $(document).ready(function () {
 </ul></li>
 </ul>
 </div>
-<div id="step-6-install-connect-rtools" class="section level2">
-<h2>Step 6 Install &amp; Connect Rtools</h2>
-<p>If you using a Windows machine this is again really easy, just run <code>installr::install.rtools()</code></p>
-<p>If you’re not using Windows you’ll have to go to <a href="https://cran.r-project.org/bin/windows/Rtools/" class="uri">https://cran.r-project.org/bin/windows/Rtools/</a> to install the Rtools 3.3</p>
+<div id="step-6-install-and-configure-git" class="section level2">
+<h2>Step 6 Install and Configure Git</h2>
+<ul>
+<li><p>Installing Git on Windows machines is again easy - Just run <code>installr::install.git()</code></p></li>
+<li><p>For non Windows machines install Git from <a href="https://git-scm.com/" class="uri">https://git-scm.com/</a></p></li>
+<li><p>Search your machine for the Git Bash application - once found open it</p></li>
+<li><p>In Git Bash type the following (The quotes are for emphasis don’t use them)</p>
+<ul>
+<li><p>git config –global user.name “your-GitHub-username”</p></li>
+<li><p>git config –global user.email “your-primary-GitHub-email-address”</p></li>
+</ul></li>
+<li><p><strong>DON’T</strong> close Git Bash - you’ll need it again soon</p></li>
+</ul>
 </div>
-<div id="step-7-install-connect-git" class="section level2">
-<h2>Step 7 Install &amp; Connect Git</h2>
-<p>If you using a Windows machine, guess what? Just run <code>installr::install.git()</code></p>
-<p>If you’re not <span class="citation">2</span> using Windows go to <a href="https://git-scm.com/" class="uri">https://git-scm.com/</a></p>
+<div id="step-7-connect-git-to-rstudio" class="section level2">
+<h2>Step 7 Connect Git to RStudio</h2>
+<ul>
+<li><p>In RStudio, open the <code>Tools</code> menu and select <code>Global Options</code></p></li>
+<li><p>In the <code>Global Options</code> window select the Git/SVN tab</p></li>
+<li><p>In <code>Git Executable</code> window, select browse and find <code>git.exe</code></p>
+<ul>
+<li><p>In Windows machines, <code>git.exe</code> can usually be found at <strong>C:/Program Files/Git/bin/git.exe</strong></p></li>
+<li><p>I’m less familiar with other OS’s, but the file path should be similar</p></li>
+<li><p>Once <code>git.exe</code> has been located select ok - <strong>BUT DON’T CLOSE THE GLOBAL OPTIONS WINDOW</strong></p></li>
+</ul></li>
+<li><p>While still at the <code>Git/SVN</code> menu, press the small ‘Create RSA Key’ button</p></li>
+<li><p>If prompted for a password, ignore it and select ‘create’</p></li>
+<li><p>When the Key appears, close the window and select <code>View Public Key</code></p>
+<ul>
+<li><p>Copy the Key to your clipboard and return to Github.com</p></li>
+<li><p>At the top of the page select the arrow beside your avatar image and choose <code>Settings</code></p></li>
+<li><p>Select <code>SSH and GPG Keys</code></p></li>
+<li><p>Select new <code>SSH Key</code></p></li>
+<li><p>Type a name for the Key and paste the public key into the window, save and close.</p></li>
+<li><p>Linking GitHub and RStudio with a SSH key-pair makes the connection ultra-secure and will greatly speed-up your workflow</p></li>
+</ul></li>
+</ul>
+</div>
+<div id="step-8-create-a-new-rproject" class="section level2">
+<h2>Step 8 Create a new RProject</h2>
+<ul>
+<li><p>On GitHub, return to the <code>your.GitHub.username/spring-2016</code> repository</p></li>
+<li><p>On the repository page select the green ‘Clone or Download’ button</p></li>
+<li><p>A window with a url address (<a href="https://" class="uri">https://</a>…) should appear</p></li>
+<li><p>Click the button next to the window to copy the address to your clipboard</p></li>
+<li><p>Return to RStudio - at the top-right of the screen find the project dropdown - it should now read ‘Project (none)’</p></li>
+<li><p>Select the dropdown arrow and choose ‘New Project’, then ‘Version Control’, then ‘Git’</p></li>
+<li><p>Three windows should be visible, in the top window paste the address for your repo that you copied from GitHub</p></li>
+<li><p>In the bottom window, select browse to choose the folder you want the files from your repo to be ‘cloned’ into</p></li>
+<li><p>Select OK, a new instance of R should appear - any files you were working on before creating the project are still there and will be visible when you close the project.</p></li>
+<li><p>Clicking the ‘Files’ tab in the lower-right pane should show the files that are in your repo at GitHub.com and on your machine in the folder you chose</p></li>
+<li><p>Open and change any of the files. Upon saving - the modified file should be listed under the ‘Git’ tab in the upper-right pane.</p></li>
+<li><p>Click the checkbox next to the file and press ‘Commit’</p></li>
+<li><p>Type a brief commit message about the changes made and press ok</p></li>
+<li><p>Close the window and select ‘Push’</p>
+<ul>
+<li><p>Enter your GitHub user.name and password</p></li>
+<li><p>If the push was successful the update to the file should be reflected on the repo page at GitHub.com</p></li>
+</ul></li>
+</ul>
+</div>
+<div id="step-9-install-connect-rtools" class="section level2">
+<h2>Step 9 Install &amp; Connect Rtools</h2>
+<ul>
+<li><p>On Windows machines run <code>installr::install.rtools()</code></p></li>
+<li><p>On non-Windows machines go to <a href="https://cran.r-project.org/bin/windows/Rtools/" class="uri">https://cran.r-project.org/bin/windows/Rtools/</a> to install Rtools 3.3</p></li>
+<li><p>Similar to what we did for Git, we need to make sure that R can find Rtools</p>
+<ul>
+<li><p>In windows, do a file search for ‘environment’</p></li>
+<li><p>Options should appear to modify the system environment variables or the account environment variables</p></li>
+<li><p>If you are have admin right on the machine you are using - choose to modify the system environment variables</p></li>
+<li><p>One of these environment variables will be called ‘path’ choose to edit this one</p></li>
+<li><p>We need to add two entries onto the front of this list</p></li>
+</ul></li>
+</ul>
+</div>
+<div id="step-10-install-a-distribution-for-creating-pdfs" class="section level2">
+<h2>Step 10 Install a distribution for creating PDF’s</h2>
+<ul>
+<li><p>On Windows machines run <code>installr::install.miktex()</code></p></li>
+<li><p>On Mac machines, install MaCTeX from <a href="https://cran.r-project.org/bin/windows/Rtools/" class="uri">https://cran.r-project.org/bin/windows/Rtools/</a> to install Rtools 3.3</p></li>
+<li><p>On Linux/Unix machines, install TeX Live from</p></li>
+</ul>
+</div>
+<div id="congratulations-youve-installed-and-integrated-rrstudio-data-science-toolkit" class="section level2">
+<h2>Congratulations! You’ve installed and integrated R/RStudio Data Science Toolkit</h2>
+<ul>
+<li><p>Now that you have it, learn how to use it</p></li>
+<li><p>Below is a working example that highlights several R packages for</p>
+<ul>
+<li><p>Retreiving data</p></li>
+<li><p>Cleaning and modifying data</p></li>
+<li><p>Automatically creating tables</p></li>
+<li><p>Citing sources and creating a bibliography</p></li>
+<li><p>Generatig plots</p></li>
+</ul></li>
+</ul>
 </div>
 </div>
 <div id="working-example" class="section level1">
 <h1>Working Example</h1>
-<div id="scraping-data-from-data.gov" class="section level2">
-<h2>Scraping data from Data.gov</h2>
-<p>[1] “httr” [1] “RSocrata” [1] “rdatacite” [1] “data.table”</p>
+<div id="scraping-data-from-data.gov-using-the-httr-package" class="section level2">
+<h2>Scraping data from Data.gov using the <code>httr</code> package</h2>
+<p>[1] “httr”</p>
 </div>
-<div id="processing-the-data" class="section level2">
-<h2>Processing The Data</h2>
+<div id="processing-the-data-using-the-data.table-package" class="section level2">
+<h2>Processing The Data using the <code>data.table</code> package</h2>
+<p>[1] “data.table”</p>
 </div>
-<div id="inserting-tables-automatically" class="section level2">
-<h2>Inserting tables automatically</h2>
+<div id="inserting-tables-automatically-with-the-xtable-package" class="section level2">
+<h2>Inserting tables automatically with the <code>xtable</code> package</h2>
+[1] “xtable”
 \begin{table}[h]
 \centering
 \caption{Extracranial Procedures Medical Payment Information} 
@@ -280,15 +393,19 @@ AK &amp; 34805.13 &amp; 14815.73 &amp; 23.00 \\
 \end{tabular}
 \end{table}
 </div>
+<div id="citing-sources-and-creating-bibliographies-with-the-knitcitations-package" class="section level2">
+<h2>Citing sources and creating bibliographies with the <code>knitcitations</code> package</h2>
+<p>[1] “knitcitations”</p>
+<blockquote>
+<p>“…if GitHub goes down, the software development world practically stops.” <span class="citation">[1]</span></p>
+</blockquote>
+</div>
 </div>
 <div id="references" class="section level1 unnumbered">
 <h1>References</h1>
 <div id="refs" class="references">
 <div id="ref-bort_why_2016">
 <p>[1] J. Bort, “Why $2 billion startup GitHub is apparently in crisis, again,” <em>Business Insider</em>. Feb-2016.</p>
-</div>
-<div id="ref-Fliedner_2016">
-<p>[2] T. Fliedner and J. Liesiö, “Adjustable robustness for multi-attribute project portfolio selection,” <em>European Journal of Operational Research</em>, vol. 252, no. 3, pp. 931–946, Aug. 2016.</p>
 </div>
 </div>
 </div>

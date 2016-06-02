@@ -1,9 +1,4 @@
-library(SMRD)
-library(xtable)
-library(ggplot2)
 knitcitations::cite_options(cite.style = "numeric", citation_format = 'pandoc')
-theme_set(theme_bw(18)+theme(text=element_text(family="serif"),legend.position="none"))
-
 
 knitr::knit_hooks$set(
   
@@ -84,7 +79,7 @@ getPackage <- function(pkg = NULL, repo = 'CRAN') {
   
   if(repo=='CRAN') {
   
-eval(substitute(ifelse(!a%in%library()$results, 
+eval(substitute(ifelse(!a%in%library()$results,
                        {install.packages(a) ; library(a)}, 
                        library(a)),
                 list(a = pkg)))
@@ -93,8 +88,11 @@ eval(substitute(ifelse(!a%in%library()$results,
     
 eval(substitute(ifelse(!a%in%library()$results, 
                        {devtools::install_github(paste(c(b,a), collapse = '/')) ; library(a) }, 
-                       library(a)), 
+                       library(a)),
                 list(a = pkg, b = repo)))
   
-}
+  }
+  
+  invisible()
+  
 }
