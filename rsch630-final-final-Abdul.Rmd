@@ -1,4 +1,5 @@
 ---
+<<<<<<< HEAD:rsch630-final.Rmd
 <<<<<<< HEAD
 title: "RSCH 630 - Research Methods"
 author: "Your Name"
@@ -7,6 +8,11 @@ title: "RSCH 630 - Research Methods - James"
 subtitle: 'Final Exam'
 author: Keegan Vaira
 >>>>>>> bfe31191a4042adfe97c8e3308f6a7fd4d61e0a8
+=======
+title: "RSCH 630 - Research Methods Final Abdul"
+subtitle: 'Final Exam'
+author: "Abdulrahman Alwabel"
+>>>>>>> c9ed8e31a75a06741ad1ee645dd59254cf145fb0:rsch630-final-final-Abdul.Rmd
 date: "Due `r format(as.POSIXct(594000, origin = '2016-06-01'), '%R %x')`"
 output:
   pdf_document:
