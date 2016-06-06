@@ -1,10 +1,5 @@
-<<<<<<< HEAD:rsch630-final-McCollum.Rmd
-Blake McCollum---
-title: "RSCH 630 - Research Methods"
-=======
 ---
 title: "RSCH 630 - Research Methods-Fisal-Final"
->>>>>>> bbfe7125af78cad54bb22dc4090ef1e5962fb590:rsch630-final.Rmd
 subtitle: 'Final Exam'
 author: "Your Name"
 date: "Due `r format(as.POSIXct(594000, origin = '2016-06-01'), '%R %x')`"
