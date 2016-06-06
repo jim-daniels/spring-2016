@@ -1,0 +1,340 @@
+---
+title: "RSCH 630 - Research Methods"
+author: "Your Name"
+date: "Due `r format(as.POSIXct(594000, origin = '2016-06-01'), '%R %x')`"
+output:
+  pdf_document:
+    fig_cap: yes
+    includes:
+      in_header: resources/jkf.header.tex
+  html_document:
+    css: resources/homework.css
+    fig_cap: yes
+    highlight: pygments
+    theme: readable
+    toc: yes
+bibliography: resources/bibliography.bib
+fontsize: 11pt
+geometry: margin=1in
+csl: resources/ieee.csl
+subtitle: Final Exam
+abstract: \singlespace "The purpose of this entire course has been to introduce techniques
+  that can help you during your research.  And while it's easy to focus on the mathematical
+  methods, you're likely to spend more time on the grunt-work tasks, such as getting
+  and cleaning data, building tables and figures, numbering equations and citing sources.
+  On the first day of class I stated that a lot of effort has gone into developing
+  tools that make these tasks simpler - and in some cases almost trivial.  It would
+  be wrong for me to simply make such a statement without showing you how to take
+  advantage of these tools.  Therefore, the purpose of this exam is to have each of
+  you build (and use) a data science toolkit that links these tools together. R/RStudio
+  will comprise the core of this toolkit.  However, even if you don't use R, this
+  toolkit will allow you to add in almost any other language you want.  Building the
+  toolkit will take some effort up-front and will introduce you to several new concepts,
+  but once it's up and running the workflow becomes almost seamless.  Alright, let's
+  get started."
+---
+
+```{r setup, echo=FALSE,message=FALSE, warning=FALSE, results='hide'}
+source('resources/setup.R')
+output <- getYAML('rsch630-final.Rmd')$output
+step = 0
+```
+
+# Installing Resources
+
+## Step `r step = step+1 ; step` - Create a GitHub Account
+
+- Go to [GitHub](https://github.com/) and sign up for an account 
+
+    + Choose a username 
+
+    + Add an email address (don't use your afit.edu address as your primary, you can add it as a secondary address later)
+
+    + Enter a password
+
+    + Before moving forward check your inbox for an email from GitHub to verify your address. 
+
+- GitHub is a version control tool for [ASCII](https://en.wikipedia.org/wiki/ASCII) or [UTF-8](https://en.wikipedia.org/wiki/UTF-8) encoded files
+
+    + Organizes code, text files, images, etc. into repositories 'repos'
+
+    + Easy to collaborate on projects with other users any where in the world without 
+
+    + No more emailing files, DVD's, USB drives - It's like dropbox on steroids
+
+    + It can be used on AF NIPR machines (probably not all, but haven't found one yet that couldn't)
+
+    + GitHub has a learning curve, but once you get the hang of it you don't go back
+
+    + Outside of AFIT/AF, GitHub is the standard - some employers prefer GitHub profiles over resumes
+
+## Step `r step=step+1 ; step` - Fork the rsch-630/spring-2016 repository
+
+- Click the round GitHub 'Octet' logo near the top to ensure you're not inside a repository
+
+- In the search box type `rsch-630` and click search
+
+- Click the `users` link toward to access the rsch-630 organization account
+
+- Click the `spring-2016` link to access the repository
+
+- Near the top of the page are three buttons `watch`, `star`, and `fork`.  Click the `fork` button.
+
+- You should now see the `your.username/spring-2016` repository under your account
+
+- This forked copy belongs to you - your changes have no affect on the `rsch-630/spring-2016`
+
+- Changes can only be made to my repo if you submit a pull request and I accept it.
+
+## Step `r step = step+1 ; step` - Install R
+
+- `r R.version.string` can be installed from [https://cloud.r-project.org/](https://cloud.r-project.org/) 
+
+- Select the version for your OS
+
+- Follow the prompts for a default installation
+
+## Step `r step = step+1 ; step` - Install a Bunch of R Packages
+
+- These are some basic packages needed for 
+
+    + Creating markdown documents
+
+    + Developing shiny apps 
+
+    + Create instant tables
+
+    + Cite references
+
+- Copy and paste the following lines of code, one at a time 
+
+    + `install.packages(c('installr','devtools','rmarkdown'))`
+
+    + `install.packages(c('shiny','RJSONIO','xtable'))`
+
+    + `install.packages(c('DT','knitcitations','RefManageR'))`
+
+- Any packages that are dependencies of this packages will also be installed
+
+- Note: the `installr` package is specific to Windows machines and is not available for Mac, Linux, Unix machines
+
+## Step `r step = step+1 ; step` - Install RStudio
+
+- On Windows machines this is really easy - just run `installr::install.rstudio()` inside of R
+
+- For non-Windows machines, go to [https://www.rstudio.com/products/rstudio/download/](https://www.rstudio.com/products/rstudio/download/)   to install the most recent version
+
+- __NOTE:__ RStudio is an IDE 
+
+    + You can work on files written in different languages side-by-side
+
+    + You can mix languages together in a single file  
+
+## Step `r step = step+1 ; step` Install and Configure Git
+
+- Installing Git on Windows machines is again easy - Just run `installr::install.git()`
+
+- For non Windows machines install Git from [https://git-scm.com/](https://git-scm.com/)
+
+- Search your machine for the Git Bash application - once found open it
+
+- In Git Bash type the following (The quotes are for emphasis don't use them)
+
+    + git config --global user.name "your-GitHub-username"
+
+    + git config --global user.email "your-primary-GitHub-email-address"
+
+- __DON'T__ close Git Bash - you'll need it again soon
+
+## Step `r step = step+1 ; step` Connect Git to RStudio
+
+- In RStudio, open the `Tools` menu and select `Global Options`
+
+- In the `Global Options` window select the Git/SVN tab
+
+- In `Git Executable` window, select browse and find `git.exe`
+
+    + In Windows machines, `git.exe` can usually be found at __C:/Program Files/Git/bin/git.exe__
+
+    + I'm less familiar with other OS's, but the file path should be similar
+
+    + Once `git.exe` has been located select ok - __BUT DON'T CLOSE THE GLOBAL OPTIONS WINDOW__
+
+- While still at the `Git/SVN` menu, press the small 'Create RSA Key' button
+
+- If prompted for a password, ignore it and select 'create'
+
+- When the Key appears, close the window and select `View Public Key`
+
+    + Copy the Key to your clipboard and return to Github.com
+
+    + At the top of the page select the arrow beside your avatar image and choose `Settings`
+
+    + Select `SSH and GPG Keys`
+
+    + Select new `SSH Key`
+
+    + Type a name for the Key and paste the public key into the window, save and close.
+
+    + Linking GitHub and RStudio with a SSH key-pair makes the connection ultra-secure and will greatly speed-up your workflow
+
+## Step `r step = step+1 ; step` Create a new RProject
+
+- On GitHub, return to the `your.GitHub.username/spring-2016` repository
+
+- On the repository page select the green 'Clone or Download' button
+
+- A window with a url address (https://...) should appear
+
+- Click the button next to the window to copy the address to your clipboard
+
+- Return to RStudio - at the top-right of the screen find the project dropdown - it should now read 'Project (none)'
+
+- Select the dropdown arrow and choose 'New Project', then 'Version Control', then 'Git'
+
+- Three windows should be visible, in the top window paste the address for your repo that you copied from GitHub
+
+- In the bottom window, select browse to choose the folder you want the files from your repo to be 'cloned' into
+
+- Select OK, a new instance of R should appear - any files you were working on before creating the project are still there and will be visible when you close the project.
+
+- Clicking the 'Files' tab in the lower-right pane should show the files that are in your repo at GitHub.com and on your machine in the folder you chose
+
+- Open and change any of the files. Upon saving - the modified file should be listed under the 'Git' tab in the upper-right pane.
+
+- Click the checkbox next to the file and press 'Commit'
+
+- Type a brief commit message about the changes made and press ok
+
+- Close the window and select 'Push'
+
+    + Enter your GitHub user.name and password
+
+    + If the push was successful the update to the file should be reflected on the repo page at GitHub.com 
+
+## Step `r step = step+1 ; step` Install & Connect Rtools (Windows Only)
+
+- On Windows machines run `installr::install.rtools()`
+
+- Similar to what we did for Git, we need to make sure that R can find Rtools
+
+    + Go to start and do a file search for 'environment'
+
+    + Options should appear to modify the system environment variables or the account environment variables
+
+    + If you are have admin right on the machine you are using - choose to modify the system environment variables
+
+    + One of these environment variables will be called 'path' choose to edit this one
+
+    + We need to add entries onto the front of this list so that two binaries folders can be located
+
+    + On most machines, Rtools is installed into the C:/ by default
+
+    + Under this scenario the following should be added to the system `path` C:\\Rtools\\bin;C:\\Rtools\\gcc-4.6.3\\bin;
+
+    + If Rtools is installed in a different location, change these entries accordingly to find the `bin` and `gcc-4.6.3\\bin` folders. 
+
+## Step `r step = step+1 ; step` Install a \LaTeX distribution for creating PDF's
+
+- On Windows machines run `installr::install.miktex()`
+
+- On Mac machines, install the full version of MacTeX from [http://tug.org/mactex/](http://tug.org/mactex/)
+
+- On Linux/Unix machines, install the full version of TeX Live [http://tug.org/texlive/](http://tug.org/texlive/)
+
+## Congratulations! You've installed and integrated R/RStudio Data Science Toolkit
+
+- Now that you have it, learn how to use it
+
+- Below is a working example that highlights several R packages for 
+
+    + Retreiving data
+
+    + Cleaning and modifying data
+
+    + Automatically creating tables
+
+    + Citing sources and creating a bibliography
+
+    + Generating plots
+
+# Working Example
+
+\singlespace
+
+## Scraping data from Data.gov using the `httr` package
+
+```{r, echo=TRUE}
+getPackage('httr', repo = 'CRAN')
+
+url <- 'https://data.cms.gov/resource/ehrv-m9r6.json'
+
+hosp.data <- content(GET(url))
+
+DATA <- matrix(NA, nrow = 1000, ncol = length(hosp.data[[1]]))
+
+for(i in 1:1000) {
+
+dats <- data.frame(unlist(hosp.data[[i]]),stringsAsFactors = F)
+DATA[i,] <- t(data.frame(dats,stringsAsFactors = F))
+}
+```
+
+## Processing The Data using the `data.table` package
+
+```{r echo=TRUE}
+getPackage('data.table',repo = 'CRAN')
+
+DATA <- as.data.frame(DATA, stringsAsFactors = F)
+
+colnames(DATA) <- rownames(dats)
+
+DATA[c(1:3,12)] <- lapply(X = DATA[c(1:3,12)], FUN = {unlist ; as.numeric} )
+
+dats <- data.table::as.data.table(DATA)
+setkey(dats, provider_state)
+
+covered = dats[,j = sum(average_covered_charges), by = provider_state]
+
+payment = dats[,j = sum(average_medicare_payments,average_medicare_payments_2), 
+               by = provider_state]
+
+discharge = dats[,j = sum(total_discharges), by = provider_state]
+
+sums <- covered[payment[discharge]]
+
+colnames(sums) <- c('Provider State','Covered Charges','Medicare Payments','Total Discharges')
+```
+
+## Inserting tables automatically with the `xtable` package
+
+```{r echo=TRUE}
+getPackage('xtable', repo = 'CRAN')
+
+xsums <- xtable(sums,
+                caption = 'Extracranial Procedures Medical Payment Information')
+print(xsums,
+      comment = F,
+      include.rownames = F, 
+      caption.placement = 'top',
+      table.placement = 'h',
+      type = switch(output, 'html' = 'html', 'pdf' = 'latex'))
+```
+
+## Citing sources and creating bibliographies with the `knitcitations` package
+
+```{r echo=TRUE}
+getPackage('knitcitations',repo = 'CRAN')
+knitcitations::cite_options(cite.style = "numeric", citation_format = 'pandoc')
+
+cleanbib()
+bib  <- read.bibtex('resources/rsch-630.bib')
+bort <- citet(bib[author='bort'])
+
+write.bibtex(file = 'resources/bibliography.bib')
+```
+
+> "...if GitHub goes down, the software development world practically stops." [`r try(bort)`]
+
+# References
+
